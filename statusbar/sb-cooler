@@ -2,12 +2,20 @@
 
 STATUS=$(cat $HOME/.cache/fans)
 
+check() {
+    if ! [ -x "$(command -v isw)" ]; then
+        exit 1
+    fi
+}
+
 if [[ -z "$STATUS" ]]; then
+    check
     sudo isw -b off && echo 0 >$HOME/.cache/fans
     STATUS=$(cat $HOME/.cache/fans)
 fi
 
 toggle() {
+    check
     case "$STATUS" in
         0) sudo isw -b on && echo 1 >$HOME/.cache/fans ;;
         1) sudo isw -b off && echo 0 >$HOME/.cache/fans ;;

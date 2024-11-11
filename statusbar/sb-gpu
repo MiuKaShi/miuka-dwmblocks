@@ -19,7 +19,7 @@ esac
 case $GPU_MODE in
     intel) MODE="💻GPU:Intel" ;;
     nvidia)
-        POWER=$(nvidia-smi --query-gpu=power.draw --format=csv,noheader,nounits)
+        POWER=$(nvidia-smi --query-gpu=power.draw --format=csv,noheader,nounits | paste -sd '/')
         MODE="🚀GPU:Nvidia(${POWER%.*}W)"
         ;;
     hybrid) MODE="✨GPU:Hybrid" ;;
