@@ -9,22 +9,24 @@ case $BLOCK_BUTTON in
         iwd-dmenu
         pkill -RTMIN+4 dwmblocks
         ;;
-		2) setsid -f "$TERMINAL" -e bluetuith ;;
+    2) setsid -f "$TERMINAL" -e bluetuith ;;
     3) notify-send "🌎 Internet module" "\- Left click to connect
 - Mid click opens bluetuith
 ❌: no network
 📶: wifi connection with quality
 🌎: ethernet working
 " ;;
-		6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
+    6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
 # Wifi
 if [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ]; then
-    sigStr="$(awk '/^\s*w/ {print int($3 * 100 / 70) "%"}' /proc/net/wireless)"
     device="$(iwctl device list | awk 'FNR == 5 {print $2}')"
+    ssidinfo="$(iwctl station $device show)"
     # ssid="$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)" # for networkmanager
-    ssid="$(iwctl station $device show | grep 'Connected network' | awk '{print $3}')"
+    ssid="$(echo "$ssidinfo" | grep 'Connected network' | awk '{print $3}')"
+    # sigStr="$(awk '/^\s*w/ {print int($3 * 100 / 70) "%"}' /proc/net/wireless)"
+    sigStr="$(echo "$ssidinfo" | grep -w 'RSSI' | awk '{print int(2 * $2 + 200) "%"}')"
     wifiicon="📶$ssid($sigStr)"
 fi
 
