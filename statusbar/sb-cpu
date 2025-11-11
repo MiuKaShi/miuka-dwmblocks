@@ -9,7 +9,7 @@ case $BLOCK_BUTTON in
 	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-CPU_TEMP=($(sensors | awk '/Core 0/ {print $3 }' | sed "s/\+//" | cut -f1 -d"." | sed ':a;N;$!ba;s/\n/\//'))
+CPU_TEMP=($(sensors | awk '/Tctl/ {print $2}' | sed "s/\+//" | cut -f1 -d"." | sed ':a;N;$!ba;s/\n/\//'))
 
 RES="🌡CPU:$CPU_TEMP°C"
 echo "$RES"
