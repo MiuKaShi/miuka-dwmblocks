@@ -9,7 +9,9 @@ case $BLOCK_BUTTON in
 	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-CPU_TEMP=($(sensors | awk '/Tctl/ {print $2}' | sed "s/\+//" | cut -f1 -d"." | sed ':a;N;$!ba;s/\n/\//'))
-
-RES="🌡CPU:$CPU_TEMP°C"
-echo "$RES"
+sensors | while read -r sensor; do case "$sensor" in
+	*Package*|*Core*|*Tctl* )
+		temp="${sensor#* [-+]}"
+		printf "🌡CPU:$temp"
+		break ;;
+esac done
