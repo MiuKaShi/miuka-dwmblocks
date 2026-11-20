@@ -3,7 +3,7 @@
 static const Block blocks[] = {
     /*Icon*/ /*Command*/ /*Update Interval*/ /*Update Signal*/
     {"", "sb-music", 1,  11},
-    {"", "sb-fcitx5", 1, 5},
+    {"", "sb-fcitx5", 0, 5},
     /* {"⌨", "sb-kbselect", 0, 30}, */
     {"", "cat /tmp/recordingicon 2>/dev/null", 0, 9},
     {"", "sb-tasks", 10, 26},
@@ -26,7 +26,7 @@ static const Block blocks[] = {
     /* {"", "sb-mailbox", 180, 12}, */
     {"", "sb-nettraf", 1, 16},
     {"", "sb-volume", 0, 10},
-    {"", "sb-battery", 5, 3},
+    /* {"", "sb-battery", 5, 3}, */
     {"", "sb-clock", 60, 2},
     {"", "sb-internet", 5, 4},
     /* {"", "sb-help-icon", 0,  15}, */
