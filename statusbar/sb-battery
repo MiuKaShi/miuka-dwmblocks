@@ -4,7 +4,7 @@
 # to charge status (🔌 for plugged up, 🔋 for discharging on battery, etc.).
 
 case $BLOCK_BUTTON in
-    1) notify-send "🔋 Battery life" "$(acpi -i | head -n 1 | cut -d' ' -f3,5-)" ;;
+    1) notify-send "🔋 Battery life" "$(upower -b | grep -E 'energy-rate:|time to empty:')" ;;
     2) p-switch ;;
     3) notify-send "🔋 Battery module" "🔋: discharging
 🛑: not charging
@@ -12,9 +12,9 @@ case $BLOCK_BUTTON in
 🔌: charging
 ⚡: charged
 ❗: battery very low!
-- Scroll to change adjust xbacklight." ;;
-    4) xbacklight -inc 10 ;;
-    5) xbacklight -dec 10 ;;
+- Scroll to change adjust backlight." ;;
+    4) changebrightness down ;;
+    5) changebrightness up ;;
     6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
