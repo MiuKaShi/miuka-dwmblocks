@@ -12,6 +12,7 @@ esac
 sensors | while read -r sensor; do case "$sensor" in
 	*Package*|*Core*|*Tctl* )
 		temp="${sensor#* [-+]}"
+		temp="${temp%% *}"
 		printf "🌡CPU:$temp"
 		break ;;
 esac done
