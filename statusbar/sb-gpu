@@ -25,5 +25,4 @@ case $GPU_MODE in
     hybrid) MODE="✨GPU:Hybrid" ;;
 esac
 
-RES="$MODE"
-echo "$RES"
+printf '%s\n' "$MODE"

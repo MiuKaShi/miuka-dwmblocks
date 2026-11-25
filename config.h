@@ -2,11 +2,11 @@
 /* recompile using the make command. */
 static const Block blocks[] = {
     /*Icon*/ /*Command*/ /*Update Interval*/ /*Update Signal*/
-    {"", "sb-music", 1,  11},
+    /* {"", "sb-music", 1,  11}, */
     {"", "sb-fcitx5", 0, 5},
     /* {"⌨", "sb-kbselect", 0, 30}, */
     {"", "cat /tmp/recordingicon 2>/dev/null", 0, 9},
-    {"", "sb-tasks", 10, 26},
+    /* {"", "sb-tasks", 10, 26}, */
     /* {"", "sb-pacpackages", 0, 8}, */
     {"", "sb-news", 0, 6},
     /* {"", "sb-price lbc \"LBRY Token\" 📚", 9000, 22}, */
@@ -28,7 +28,7 @@ static const Block blocks[] = {
     {"", "sb-volume", 0, 10},
     /* {"", "sb-battery", 5, 3}, */
     {"", "sb-clock", 60, 2},
-    {"", "sb-internet", 5, 4},
+    {"", "sb-internet", 30, 4},
     /* {"", "sb-help-icon", 0,  15}, */
 };
 

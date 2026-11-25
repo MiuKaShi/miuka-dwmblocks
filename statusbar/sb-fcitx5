@@ -29,4 +29,4 @@ case "$name" in
         ;;
 esac
 
-echo "$icon"
+printf '%s\n' "$icon"
